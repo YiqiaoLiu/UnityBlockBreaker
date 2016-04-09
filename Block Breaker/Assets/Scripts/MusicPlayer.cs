@@ -2,12 +2,17 @@
 using System.Collections;
 
 public class MusicPlayer : MonoBehaviour {
+	static MusicPlayer BackgroundMusic = null;
 
-	// Use this for initialization
-	void Start () {
-		GameObject.DontDestroyOnLoad (gameObject);
+	void Awake(){
+		if (BackgroundMusic == null) {
+			BackgroundMusic = this;
+			GameObject.DontDestroyOnLoad(gameObject);
+		} else {
+			Destroy(gameObject);
+		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
